@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ehh, Hola, brou</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: url('https://wallpapercave.com/wp/wp4923981.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+        }
+        h1 {
+            color: #eebbc3;
+            font-size: 2.5em;
+            margin-top: 60px;
+            z-index: 1;
+            position: relative;
+            text-shadow: 2px 2px 8px #232946;
+        }
+        button {
+            margin-top: 40px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background: #eebbc3;
+            color: #232946;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 1;
+            position: relative;
+        }
+        button:hover {
+            background: #ffd6e0;
+        }
+        #mensaje {
+            margin-top: 30px;
+            font-size: 1.3em;
+            color: #eebbc3;
+            z-index: 1;
+            position: relative;
+            text-shadow: 1px 1px 6px #232946;
+        }
+        .llama {
+            position: absolute;
+            width: 70px;
+            height: 90px;
+            pointer-events: none;
+            opacity: 0.92;
+            animation: caer 7s linear;
+        }
+        @keyframes caer {
+            0% {
+                top: -100px;
+                opacity: 0.7;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                top: 110vh;
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Para Miguel:</h1>
+    <button id="btnMensaje" onclick="mostrarMensaje()">Haz clic para ver tu mensaje</button>
+    <div id="mensaje"></div>
+
+    <script>
+        const llamaURL = "llama.png";
+        let llamasEnPantalla = 0;
+        const MAX_LLAMAS = 15; // Limita la cantidad máxima de llamas
+
+        function crearLlama() {
+            if (llamasEnPantalla >= MAX_LLAMAS) return;
+            const llama = document.createElement('img');
+            llama.src = llamaURL;
+            llama.className = 'llama';
+            llama.style.left = Math.random() * 95 + 'vw';
+            llama.style.animationDelay = '0s';
+            document.body.appendChild(llama);
+            llamasEnPantalla++;
+
+            llama.addEventListener('animationend', () => {
+                llama.remove();
+                llamasEnPantalla--;
+            });
+        }
+
+        setInterval(() => {
+            crearLlama();
+        }, 1200); // Intervalo más largo para evitar sobrecarga
+
+        function mostrarMensaje() {
+            document.getElementById('mensaje').innerHTML = 
+                "Miguel, eres increíble jugando Fortnite. <br>Admiro tu habilidad, tu dedicación y, sobre todo, la alegría que compartes en cada partida. <br>¡Gracias por todos los momentos de risa y por ser un gran amigo y compañero de juego!<br><span style='font-size:2em;'>🔥🐾 ¡Sigue brillando, crack! 🐾🔥</span>";
+        }
+    </script>
+</body>
+</html>
